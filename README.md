@@ -1,9 +1,6 @@
 # KateEditor-JAKT
 KateEditor-JAKT, is a syntax highlighter for KateEditor 
 
-## Warning :
-⚠️Warning : `KateEditor-JAKT` not ready yet ⚠️
-
 ## Install :
 To install it, you should copy `Jakt.xml` to `Kate` syntax folder. depend on your operation system flow right path for your self.
 
