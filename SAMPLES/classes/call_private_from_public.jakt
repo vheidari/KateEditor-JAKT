@@ -1,0 +1,16 @@
+/// Expect:
+/// - output: "PASS\n"
+
+class Class {
+    fn private_function(this) {
+        println("PASS")
+    }
+    public fn public_function(this) {
+        this.private_function()
+    }
+}
+
+fn main() {
+    let c = Class()
+    c.public_function()
+}

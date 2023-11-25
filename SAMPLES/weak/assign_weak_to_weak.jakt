@@ -1,0 +1,15 @@
+/// Expect:
+/// - output: "OK\n"
+
+class Foo {
+
+}
+
+fn main() {
+
+    mut foo: weak Foo = None
+    mut bar = foo
+
+    println("OK")
+    
+}

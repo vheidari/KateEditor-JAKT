@@ -1,0 +1,5 @@
+/// Expect:
+/// - error: "Reference parameter can not be mutable"
+
+fn foo(anon mut a: &i64) {
+}

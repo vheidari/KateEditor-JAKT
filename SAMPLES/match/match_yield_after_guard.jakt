@@ -1,0 +1,25 @@
+/// Expect:
+/// - output: "3\n"
+
+enum Foo {
+    Bar(id: i64)
+    Baz
+}
+
+fn main() -> c_int {
+    let a = Foo::Bar(id: 3)
+
+    let b = match a {
+        Bar(id) => {
+            guard id > 2 else {
+                return 0
+            }
+
+            yield id
+        }
+        else => 0
+    }
+
+    println("{}", b)
+    return 0
+}

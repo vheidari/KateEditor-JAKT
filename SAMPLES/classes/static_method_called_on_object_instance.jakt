@@ -1,0 +1,13 @@
+/// Expect:
+/// - error: "Cannot call static method on an instance of an object"
+
+class Foo {
+    public fn bar() {
+        println("I am a static method")
+    }
+}
+
+fn main() {
+    let foo = Foo()
+    foo.bar()
+}

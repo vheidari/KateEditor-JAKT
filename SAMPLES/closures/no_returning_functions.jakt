@@ -1,0 +1,8 @@
+/// Expect:
+/// - error: "Returning a function is not currently supported\n"
+
+fn test() -> fn() -> void {
+    return fn() {}
+}
+
+fn main() {}

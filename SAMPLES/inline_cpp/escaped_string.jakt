@@ -1,0 +1,10 @@
+/// Expect:
+/// - output: "\"test\"\n"
+
+fn main() {
+    unsafe {
+        cpp {
+            "printf(\"\\\"test\\\"\n\");"
+        }
+    }
+}

@@ -1,0 +1,6 @@
+/// Expect:
+/// - error: "Condition must be a boolean expression\n"
+
+fn main() {
+    if "foo" {}
+}

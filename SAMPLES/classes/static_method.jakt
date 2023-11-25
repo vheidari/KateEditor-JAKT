@@ -1,0 +1,18 @@
+/// Expect:
+/// - output: "Jane\n1100\n"
+
+class Person {
+    public name: String
+    public age: i64
+
+    public fn generate(name: String, age: i64) throws -> Person {
+        return Person(name: name, age: age + 1000);
+    }
+}
+
+fn main() {
+    let p = Person::generate(name: "Jane", age: 100)
+
+    println("{}", p.name)
+    println("{}", p.age)
+}

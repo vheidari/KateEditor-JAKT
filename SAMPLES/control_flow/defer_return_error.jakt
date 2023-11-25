@@ -1,0 +1,14 @@
+/// Expect:
+/// - error: "‘return’ is not allowed inside ‘defer’\n"
+
+fn foo() {
+    defer {
+        return 2
+    }
+
+    return 1
+}
+
+fn main() {
+    println("foo returned {}", foo())
+}

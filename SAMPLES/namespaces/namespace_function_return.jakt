@@ -1,0 +1,16 @@
+/// Expect:
+/// - output: "Biz: Biz(a: 10)\n"
+
+namespace Foo {
+    namespace Bar {
+        struct Biz { a: i32 }
+    }
+}
+
+fn get_biz() -> Foo::Bar::Biz {
+    return Foo::Bar::Biz(a: 10)
+}
+
+fn main() {
+    println("Biz: {}", get_biz())
+}

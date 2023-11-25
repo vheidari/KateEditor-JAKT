@@ -1,0 +1,14 @@
+/// Expect:
+/// - error: "Multiple catch-all cases in match are not allowed\n"
+
+enum Foo {
+    A
+}
+
+fn main() {
+    let x = Foo::A()
+    match x {
+        else => 1
+        else => 2
+    }
+}

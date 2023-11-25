@@ -1,0 +1,25 @@
+/// Expect:
+/// - output: "123\nPASS\n"
+
+struct Foo {
+    x: usize
+}
+
+fn throw_for_fun() throws -> Foo {
+    throw Error::from_errno(123)
+}
+
+fn pretend_to_throw_for_fun() throws -> Foo {
+    return Foo(x: 123)
+}
+
+fn main() -> c_int {
+    println("{}", (try pretend_to_throw_for_fun())?.x)
+    let foo = try throw_for_fun() catch {
+        println("PASS")
+        return 0
+    }
+
+    println("FAIL")
+    return 1
+}

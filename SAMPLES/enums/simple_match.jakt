@@ -1,0 +1,64 @@
+/// Expect:
+/// - output: "Success! we're fine and there's a 42 in our optional\n"
+
+enum BetterOptional<T> {
+    Some(T)
+    None
+}
+
+// FIXME: (Err -> E) is a workaround for a clang bug where the specialised template scope is somehow
+//        placed before the namespace whose member is being specialised.
+enum BetterResult<T, Err> {
+    ImFineHowAreYou(T)
+    TheWorldIsBurning(Err)
+}
+
+enum ObjectivelyBetterOptional<T> {
+    Some (
+        value: T
+        joke_metadata: String
+    )
+    None
+}
+
+fn make_result(okay: bool) throws -> BetterResult<i64, String> {
+    if okay {
+        return BetterResult::ImFineHowAreYou(42)
+    }
+    return BetterResult::TheWorldIsBurning("666")
+}
+
+fn better_optional_from<T>(anon optional: T?) -> BetterOptional<T> {
+    if optional.has_value() {
+        return BetterOptional::Some(optional!)
+    }
+    return BetterOptional::None()
+}
+
+fn to_objectively_better_optional<T>(anon optional: BetterOptional<T>) throws -> ObjectivelyBetterOptional<T> {
+    return match optional {
+        BetterOptional::Some(value) => ObjectivelyBetterOptional::Some(value: value, joke_metadata: "I'm a joke")
+        BetterOptional::None => ObjectivelyBetterOptional::None()
+    }
+}
+
+fn main() {
+    match make_result(okay: true) {
+        ImFineHowAreYou(x) => {
+            let a: i64? = x
+            match to_objectively_better_optional(better_optional_from(a)) {
+                Some(value: x) => println("Success! we're fine and there's a {} in our optional", x)
+                None => println("What??????")
+            }
+        }
+        TheWorldIsBurning => println("What do you mean the world is burning, it's perfectly fine")
+    }
+    let str = match make_result(okay: false) {
+        ImFineHowAreYou => "No you're not!!!!111One!"
+        TheWorldIsBurning => "So it is..."
+    }
+    if str == "So it is..." {
+        return 0
+    }
+    return 1
+}

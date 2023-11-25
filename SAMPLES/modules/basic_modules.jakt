@@ -1,0 +1,8 @@
+/// Expect:
+/// - output: "not_cool\n"
+
+import b
+
+fn main() {
+    b::not_cool()
+}

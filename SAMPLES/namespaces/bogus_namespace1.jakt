@@ -1,0 +1,11 @@
+/// Expect:
+/// - error: "Not a namespace, enum, class, or struct: ‘NS::Foo’\n"
+
+namespace NS {
+    fn foo() {}
+}
+
+fn main() {
+    NS::foo()
+    NS::Foo::foo()
+}

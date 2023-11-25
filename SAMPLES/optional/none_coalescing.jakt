@@ -1,0 +1,18 @@
+/// Expect:
+/// - output: "PASS\nPASS\nzero: 0\n"
+
+fn main() {
+    let x: String? = "PASS"
+    println("{}", x ?? "FAIL")
+
+    let y: String? = None
+    println("{}", y ?? "PASS")
+
+
+    // The right hand side is lazily evaluated.
+    mut zero = 0
+    let z: i64? = 69
+    let q = z ?? ++zero
+
+    println("zero: {}", zero)
+}

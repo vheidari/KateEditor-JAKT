@@ -1,0 +1,9 @@
+/// Expect:
+/// - error: "Wrong parameter name in argument label"
+
+fn foo(a: bool, b: bool) {
+}
+
+fn main() {
+    foo(x: true, y: false)
+}

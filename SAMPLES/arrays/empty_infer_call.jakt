@@ -1,0 +1,10 @@
+/// Expect:
+/// - output: "OK\n"
+
+fn test(arr: [f64]) {
+    println("OK")
+}
+
+fn main() {
+    test(arr: [])
+}

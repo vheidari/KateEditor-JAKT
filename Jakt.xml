@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="PlantUml" version="1" kateversion="2.4" section="Sources" extensions="*.jakt" author="Vahid Heidari (vahid-heidari@hotmail.com)" license="MIT">
+<language name="Jakt" version="1" kateversion="2.4" section="Sources" extensions="*.jakt" author="Vahid Heidari (vahid-heidari@hotmail.com)" license="MIT">
     <highlighting>
 
         <!-- Define jaktConditional keywords  -->
@@ -131,7 +131,7 @@
             <!-- End Handeling Multiple line comment handeling  -->
             <context name="Comment" attribute="Comment" lineEndContext="#stay">
                 <DetectSpaces/>
-                <StringDetect attribute="Comment" context="#pop" String="'/" endRegion="comment"/>
+                <StringDetect attribute="Comment" context="#pop" String="//" endRegion="comment"/>
             </context>
 
         </contexts>
@@ -156,7 +156,7 @@
     <general>
         <!-- Comments  -->
         <comments>
-            <comment name="singleLine" start="'" />
+            <comment name="singleLine" start="//" />
             <comment name="multiLine" start="/'" end="'/" region="CommentFolding" />
         </comments>
         <keywords casesensitive="1" />

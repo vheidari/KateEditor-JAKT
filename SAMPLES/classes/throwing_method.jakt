@@ -1,0 +1,15 @@
+/// Expect:
+/// - output: "PASS\n"
+
+class Foo {
+    public fn toss(this) throws {
+        throw Error::from_errno(1)
+    }
+}
+
+fn main() {
+    let foo = Foo()
+    try foo.toss() catch error {
+        println("PASS")
+    }
+}

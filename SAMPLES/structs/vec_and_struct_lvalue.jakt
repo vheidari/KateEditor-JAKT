@@ -1,0 +1,19 @@
+/// Expect:
+/// - output: "Jane\nfoobar\n"
+
+struct Person {
+    name: String
+    age: i64
+}
+
+fn main() {
+    mut arr = [
+        Person(name: "Jane", age: 100), 
+        Person(name: "Björn", age: 200)
+    ]
+
+    arr[1].name = "foobar";
+
+    println("{}", arr[0].name)
+    println("{}", arr[1].name)
+}

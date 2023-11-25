@@ -1,0 +1,26 @@
+/// Expect:
+/// - output: "Foo's name is anon:1 and bar's name is Test!\n"
+
+enum Foo {
+    Id(i32)
+    Name(String)
+
+    private fn name_impl(this) throws -> String? {
+        match this {
+            Name(name) => {
+                return name
+            }
+            Id(id) => {
+                return format("anon:{}", id)
+            }
+        }
+    }
+
+    fn name(this) throws => this.name_impl()
+}
+
+fn main() {
+    let foo = Foo::Id(1)
+    let bar = Foo::Name("Test")
+    println("Foo's name is {} and bar's name is {}!", foo.name(), bar.name())
+}

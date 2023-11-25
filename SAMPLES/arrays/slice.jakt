@@ -1,0 +1,40 @@
+/// Expect:
+/// - output: "slice size: 2\n3\n4\n[3, 4]\nslice first: 3\nslice last: 4\nslice contains 4: true\nslice contains 5: false\narray index 0: 1\nslice index 0: 0\n[1, 2, 0, 4]\narray from slice: [22, 4]\nslice: [0, 4]\n[]\n"
+
+fn start() => 0
+fn end() => 4
+
+fn main() {
+    let x = [1, 2, 3, 4, 5]
+    mut slice = x[2..4] 
+    
+    println("slice size: {}", slice.size())
+
+    for y in slice {
+        println("{}", y)
+    }
+
+    println("{}", slice)
+
+    println("slice first: {}", slice.first())
+    println("slice last: {}", slice.last())
+
+    println("slice contains 4: {}", slice.contains(4))
+    println("slice contains 5: {}", slice.contains(5))
+
+    slice[0] = 0
+    println("array index 0: {}", x[0])
+    println("slice index 0: {}", slice[0])
+ 
+    println("{}", x[start()..end()])
+
+    mut y = slice.to_array()
+    y[0] = 22
+
+    println("array from slice: {}", y)
+    println("slice: {}", slice)
+
+    let out_of_bounds_slice = x[10..]
+
+    println("{}", out_of_bounds_slice)
+}

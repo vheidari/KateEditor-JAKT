@@ -1,0 +1,20 @@
+/// Expect:
+/// - output: "PASS\n"
+
+namespace foo {
+    namespace bar {
+        fn baz() {
+            println("PASS")
+        }
+    }
+}
+
+namespace foo {
+    fn run() {
+        bar::baz()
+    }
+}
+
+fn main() {
+    foo::run()
+}

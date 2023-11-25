@@ -1,0 +1,33 @@
+/// Expect:
+/// - output: "Caught 1234\nCaught 6969\nCaught 5252\n"
+
+fn notoss() throws -> i32 {
+    if not true {
+        throw Error::from_errno(123456)
+    }
+    return 5
+}
+
+fn toss(anon value: i32) throws {
+    throw Error::from_errno(value)
+}
+
+fn main() {
+    try toss(1234) catch error {
+        println("Caught {}", error.code())
+    }
+
+    try {
+        toss(6969)
+    } catch error {
+        println("Caught {}", error.code())
+    }
+
+    try {
+        notoss()
+        toss(5252)
+        println("FAIL")
+    } catch error {
+        println("Caught {}", error.code())
+    }
+}

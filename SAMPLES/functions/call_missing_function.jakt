@@ -1,0 +1,6 @@
+/// Expect:
+/// - error: "Call to unknown function"
+
+fn main() {
+    missing_function()
+}

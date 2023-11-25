@@ -1,0 +1,12 @@
+/// Expect:
+/// - output: "45\n"
+
+fn main() {
+    mut total = 0
+
+    for x in 1..10 {
+        total += x
+    }
+
+    println("{}", total)
+}

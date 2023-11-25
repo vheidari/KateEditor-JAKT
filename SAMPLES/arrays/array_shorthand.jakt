@@ -1,0 +1,15 @@
+/// Expect:
+/// - output: "foo\nbar\n"
+
+fn make_v() throws -> [String] {
+    return ["foo", "bar"]
+}
+
+fn main() {
+    let v: [String] = make_v()
+    mut i = 0
+    while i < 2 {
+        println("{}", v[i])
+        ++i
+    }
+}

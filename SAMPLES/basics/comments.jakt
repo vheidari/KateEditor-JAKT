@@ -1,0 +1,7 @@
+/// Expect:
+/// - output: "hello\n"
+
+fn main() {
+    // This is a comment
+    println("hello")
+}

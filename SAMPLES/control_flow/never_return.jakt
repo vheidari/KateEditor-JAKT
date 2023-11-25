@@ -1,0 +1,13 @@
+/// Expect:
+/// - output: ""
+
+fn test() -> String {
+    if false {
+        return "hi"
+    }
+    abort()
+}
+
+fn main() -> c_int {
+    abort()
+}

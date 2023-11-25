@@ -1,0 +1,10 @@
+/// Expect:
+/// - error: "if and else have identical blocks"
+
+fn main() {
+    if true {
+        println("hello")
+    } else {
+        println("hello")
+    }
+}

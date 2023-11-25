@@ -1,0 +1,6 @@
+/// Expect:
+/// - output: "-14\n"
+
+fn main() {
+    println("{}", -(4 + 10))
+}

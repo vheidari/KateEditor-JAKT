@@ -1,0 +1,8 @@
+/// Expect:
+/// - error: "Increment/decrement of immutable variable"
+
+fn main() {
+    let x = 10
+
+    println("{}", ++x)
+}

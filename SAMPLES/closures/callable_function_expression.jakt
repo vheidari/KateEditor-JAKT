@@ -1,0 +1,11 @@
+/// Expect:
+/// - output: "1\n"
+
+fn main() {
+    let a = match true {
+        true => fn(x: i32) -> i32 => x
+        else => fn(x: i32) -> i32 => x + 1
+    }
+
+    println("{}", a(x: 1))
+}

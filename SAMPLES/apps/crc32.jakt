@@ -1,0 +1,43 @@
+/// Expect:
+/// - stderr: "usage: crc32 <path>\n"
+
+import jakt::libc::io { fopen, fclose, fgetc, feof }
+
+fn make_lookup_table() throws -> [u32] {
+    mut data = [0u32; 256]
+    for i in 0..data.size() {
+        mut value = i as! u32
+        for j in 0..8 {
+            if (value & 1) != 0 {
+                value = 0xedb88320u32 ^ (value >> 1)
+            } else {
+                value >>= 1
+            }
+        }
+        data[i] = value
+    }
+    return data
+}
+
+fn main(args: [String]) -> c_int {
+    if args.size() <= 1 {
+        eprintln("usage: crc32 <path>")
+        return 1
+    }
+
+    mut file = fopen(args[1].c_string(), "r".c_string())
+    defer fclose(file)
+
+    let table = make_lookup_table()
+
+    mut state = 0xffffffffu32
+    mut c = fgetc(file)
+    while feof(file) == 0 {
+        state = table[(state ^ c) & 0xff] ^ (state >> 8);
+        c = fgetc(file)
+    }
+
+    let digest = ~state
+    println("{}", digest)
+    return 0
+}

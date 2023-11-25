@@ -1,0 +1,16 @@
+/// Expect:
+/// - output: "I am the parent\n"
+
+class Parent {
+    public fn greet(this) {
+        println("I am the parent")
+    }
+}
+
+class Child: Parent {
+}
+
+fn main() {
+    let child = Child()
+    child.greet()
+}

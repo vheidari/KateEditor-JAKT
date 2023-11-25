@@ -1,0 +1,11 @@
+/// Expect:
+/// - output: "10\n"
+
+fn main() {
+    let x = 10
+    let y = &raw x
+
+    unsafe {
+        println("{}", *y)
+    }
+}

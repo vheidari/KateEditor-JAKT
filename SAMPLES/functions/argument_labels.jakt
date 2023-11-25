@@ -1,0 +1,24 @@
+/// Expect:
+/// - output: ""
+
+fn foo(a: bool, b: bool) {
+}
+
+fn bar(anon a: bool, b: bool) {
+}
+
+fn baz(anon a: bool, anon b: bool) {
+}
+
+fn qux(a: bool) {
+
+}
+
+fn main() {
+    foo(a: true, b: true)
+    bar(true, b: true)
+    baz(true, true)
+
+    let a = true
+    qux(a)
+}

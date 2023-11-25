@@ -1,0 +1,8 @@
+/// Expect:
+/// - output: "PASS\n"
+
+import foo
+
+fn main() {
+    foo::bar()
+}

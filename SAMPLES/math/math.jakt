@@ -1,0 +1,10 @@
+/// Expect:
+/// - output: "7\n"
+
+fn subtract(x: i64, y: i64) {
+    println("{}", x - y)
+}
+
+fn main() {
+    subtract(x: 10, y: 3)
+}

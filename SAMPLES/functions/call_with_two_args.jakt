@@ -1,0 +1,11 @@
+/// Expect:
+/// - output: "Well\nhello friends.\n"
+
+fn greet(msg: String, msg2: String) {
+    println("{}", msg)
+    println("{}", msg2)
+}
+
+fn main() {
+    greet(msg: "Well", msg2: "hello friends.")
+}

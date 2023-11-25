@@ -1,0 +1,13 @@
+/// Expect:
+/// - output: "PASS\n"
+
+fn foo() {
+    if true {
+        println("PASS")
+        return
+    }
+}
+
+fn main() {
+    foo()
+}

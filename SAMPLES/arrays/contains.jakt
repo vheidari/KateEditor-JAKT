@@ -1,0 +1,8 @@
+/// Expect:
+/// - output: "true\nfalse\n"
+
+fn main() {
+    let arr = ["Well", "Hello", "Friends", "!"]
+    println("{}", arr.contains("Hello"))
+    println("{}", arr.contains("Goodbye"))
+}

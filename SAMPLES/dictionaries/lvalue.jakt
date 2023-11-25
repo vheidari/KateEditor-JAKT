@@ -1,0 +1,8 @@
+/// Expect:
+/// - output: "0: foo\n"
+
+fn main() {
+    mut dict = Dictionary<i32, String>()
+    dict[0] = "foo"
+    println("0: {}", dict[0])
+}

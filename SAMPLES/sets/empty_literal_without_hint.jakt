@@ -1,0 +1,6 @@
+/// Expect:
+/// - error: "Cannot infer generic type for Set<T>\n"
+
+fn main() {
+    let x = {}
+}

@@ -1,0 +1,8 @@
+/// Expect:
+/// - output: "1\n"
+
+fn dump<T>(anon v: [T]) => v[0]
+
+fn main() {
+    println("{}", dump([1, 2, 3]))
+}

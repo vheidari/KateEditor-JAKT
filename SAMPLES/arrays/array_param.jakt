@@ -1,0 +1,8 @@
+/// Expect:
+/// - output: "one\n"
+
+fn get_first(anon v: [String]) => v[0]
+
+fn main() {
+    println("{}", get_first(["one", "two"]))
+}

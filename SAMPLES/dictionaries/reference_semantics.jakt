@@ -1,0 +1,13 @@
+/// Expect:
+/// - output: "PASS\n"
+
+fn change_value(mut dictionary: [String:String]) throws {
+    dictionary.set(key: "foo", value: "PASS")
+}
+
+fn main() {
+    mut dictionary = ["foo": "FAIL", "bar": ":^)"]
+    change_value(dictionary)
+
+    println("{}", dictionary["foo"]);
+}

@@ -1,0 +1,12 @@
+/// Expect:
+/// - output: "2 2\n"
+
+fn main() {
+    mut set1: [i64] = []
+    set1.push(1)
+    set1.push(2)
+    mut set2: [[[String]]] = []
+    set2.push([["hello"]])
+    set2.push([["world"]])
+    println("{} {}", set1.size(), set2.size())
+}

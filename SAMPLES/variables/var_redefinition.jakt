@@ -1,0 +1,8 @@
+/// Expect:
+/// - error: "Redefinition of variable ‘x’\n"
+
+fn main() {
+    let x = 10
+    let x = 20
+    println("{}", x)
+}

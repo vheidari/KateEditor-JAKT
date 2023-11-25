@@ -1,0 +1,9 @@
+/// Expect:
+/// - output: "-50\n-200\n"
+
+fn main() {
+    let x: i64 = -100
+
+    println("{}", x >>> 1)
+    println("{}", x <<< 1)
+}

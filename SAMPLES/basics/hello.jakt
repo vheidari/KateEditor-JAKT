@@ -1,0 +1,6 @@
+/// Expect:
+/// - output: "Well, hello friends.\n"
+
+fn main() {
+    println("Well, hello friends.")
+}

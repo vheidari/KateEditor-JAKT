@@ -1,0 +1,12 @@
+/// Expect:
+/// - output: "Well, hello friends\n"
+
+namespace Greeters {
+    fn greet() {
+        println("Well, hello friends")
+    }
+}
+
+fn main() {
+    Greeters::greet()
+}

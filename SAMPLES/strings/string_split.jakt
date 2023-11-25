@@ -1,0 +1,8 @@
+/// Expect:
+/// - output: "bar\n"
+
+fn main() {
+    let result = "foo bar".split(c' ')
+
+    println("{}", result[1])
+}

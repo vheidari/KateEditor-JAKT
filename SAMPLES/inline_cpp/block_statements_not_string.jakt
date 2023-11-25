@@ -1,0 +1,10 @@
+/// Expect:
+/// - error: "Expected block of strings\n"
+
+fn main() {
+    unsafe {
+        cpp {
+            foo()
+        }
+    }
+}

@@ -1,0 +1,9 @@
+/// Expect: Skip
+
+fn bar() throws {
+    println("PASS")
+}
+
+struct Bar {
+    fn foo() throws -> String => "PASS"
+}

@@ -1,0 +1,15 @@
+/// Expect:
+/// - output: "the: 2\n"
+
+fn main() {
+    let text = "midway upon the journey of our life I found myself within a forest dark for the straightforward pathway had been lost"
+    let words = text.split(c' ')
+
+    mut counts = Dictionary<String, i64>();
+
+    for i in 0..words.size() {
+        counts.set(key: words[i], value: counts.get(words[i]).value_or(0) + 1)
+    }
+
+    println("the: {}", counts["the"])
+}

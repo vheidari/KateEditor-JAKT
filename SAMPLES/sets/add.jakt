@@ -1,0 +1,12 @@
+/// Expect:
+/// - output: "3\n3\n"
+
+fn main() {
+    mut set = {"b", "c"}
+    set.add("a")
+    println("{}", set.size())
+
+    set.add("b")
+    set.add("c")
+    println("{}", set.size())
+}

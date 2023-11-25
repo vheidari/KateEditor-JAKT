@@ -1,0 +1,7 @@
+/// Expect:
+/// - error: "Unreachable code\n"
+
+fn main() {
+    abort()
+    println("hello")
+}

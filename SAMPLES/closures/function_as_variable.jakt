@@ -1,0 +1,9 @@
+/// Expect:
+/// - output: "PASS\nPASS\n"
+
+fn main() {
+    let cb = fn() throws => "PASS"
+    let cb2: fn() throws -> String = fn() throws => "PASS"
+    println("{}", cb())
+    println("{}", cb2())
+}

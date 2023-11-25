@@ -1,0 +1,12 @@
+/// Expect:
+/// - output: "PASS\n"
+
+class C {
+    public message: String
+}
+
+fn main() {
+    mut a: [C] = []
+    a.push(C(message: "PASS"))
+    println("{}", a.pop()!.message)
+}

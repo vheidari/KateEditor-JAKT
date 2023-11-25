@@ -1,0 +1,20 @@
+/// Expect:
+/// - stderr: "usage: cat <path>\n"
+
+fn main(args: [String]) -> c_int {
+    if args.size() <= 1 {
+        eprintln("usage: cat <path>")
+        return 1
+    }
+
+    mut file = File::open_for_reading(args[1])
+    mut array: [u8] = [0u8]
+
+    while file.read(array) != 0 {
+        for idx in 0..array.size() {
+            print("{:c}", array[idx])
+        }
+    }
+
+    return 0
+}

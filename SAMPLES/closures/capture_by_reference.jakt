@@ -1,0 +1,16 @@
+/// Expect:
+/// - output: "PASS\n"
+
+fn test(cb: fn() -> void) {
+    cb()
+}
+
+class Foo {
+    public message: String
+}
+
+fn main() {
+    let pass = Foo(message: "PASS")
+    test(cb: fn[&pass]() => println(pass.message))
+}
+

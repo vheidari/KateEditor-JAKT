@@ -1,0 +1,7 @@
+/// Expect:
+/// - output: "100\n"
+
+fn main() {
+    mut x = 100
+    println("{}", x)
+}

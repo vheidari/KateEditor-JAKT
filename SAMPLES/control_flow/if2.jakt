@@ -1,0 +1,10 @@
+/// Expect:
+/// - output: "true\n"
+
+fn main() {
+    let x: i64 = 100;
+
+    if (x == 100) {
+        println("true")
+    }
+}

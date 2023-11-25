@@ -1,0 +1,6 @@
+/// Expect:
+/// - error: "Cannot infer key type for Dictionary<K, V>\n"
+
+fn main() {
+    let x = [:]
+}

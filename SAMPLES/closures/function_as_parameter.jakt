@@ -1,0 +1,10 @@
+/// Expect:
+/// - output: "well, hello friends.\n"
+
+fn hello(anon who: fn() throws -> String) throws {
+    println("well, hello {}", who())
+}
+
+fn main() {
+    hello(fn() throws => "friends.")
+}

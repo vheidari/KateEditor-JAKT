@@ -1,0 +1,10 @@
+/// Expect:
+/// - output: "hello\nPASS\n"
+
+fn main() {
+    mut a: String? = None
+    a = "hello"
+    println("{}", a!)
+    a = None
+    println("{}", a ?? "PASS")
+}

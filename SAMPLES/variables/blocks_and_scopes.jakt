@@ -1,0 +1,11 @@
+/// Expect:
+/// - output: "20\n10\n"
+
+fn main() {
+    let x = 10
+    {
+        let x = 20
+        println("{}", x)
+    }
+    println("{}", x)
+}

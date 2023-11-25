@@ -1,0 +1,48 @@
+/// Expect:
+/// - stderr: "Panic: Overflow in checked addition '127 + 1'\nPanic: Overflow in checked addition '32767 + 1'\nPanic: Overflow in checked addition '2147483647 + 1'\nPanic: Overflow in checked addition '9223372036854775807 + 1'\nPanic: Overflow in checked addition '255 + 1'\nPanic: Overflow in checked addition '65535 + 1'\nPanic: Overflow in checked addition '4294967295 + 1'\nPanic: Overflow in checked addition '18446744073709551615 + 1'\n"
+
+fn main() {
+    {
+        let a: i8 = 127
+        let b: i8 = 1
+        a + b
+    }
+    {
+        let a: i16 = 32_767
+        let b: i16 = 1
+        a + b
+    }
+    {
+        let a: i32 = 2_147_483_647
+        let b: i32 = 1
+        a + b
+    }
+    {
+        let a: i64 = 9_223_372_036_854_775_807
+        let b: i64 = 1
+        a + b
+    }
+    {
+        let a: u8 = 255
+        let b: u8 = 1
+        a + b
+    }
+    {
+        let a: u16 = 65_535
+        let b: u16 = 1
+        a + b
+    }
+    {
+        let a: u32 = 4_294_967_295
+        let b: u32 = 1
+        a + b
+    }
+    {
+        // FIXME: The max value as a literal (18_446_744_073_709_551_615) fails to parse with 'could not parse int'
+        mut a: u64 = 9_223_372_036_854_775_807
+        a *= 2
+        a += 1
+        let b: u64 = 1
+        a + b
+    }
+}

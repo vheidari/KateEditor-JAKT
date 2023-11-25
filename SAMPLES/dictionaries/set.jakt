@@ -1,0 +1,10 @@
+/// Expect:
+/// - output: "3\n"
+
+fn main() {
+    mut dict = ["a": 1, "b": 2]
+
+    dict.set(key: "c", value: 3);
+
+    println("{}", dict.get("c")!)
+}

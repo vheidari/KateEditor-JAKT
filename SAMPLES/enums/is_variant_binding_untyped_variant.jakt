@@ -1,0 +1,16 @@
+/// Expect:
+/// - output: "PASS\n"
+
+enum E {
+    A(x: i64)
+    B
+}
+
+fn main() {
+    let e = E::B
+    if e is A(x) and x == 5 {
+        println("FAIL")
+    } else {
+        println("PASS")
+    }
+}

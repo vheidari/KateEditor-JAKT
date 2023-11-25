@@ -1,0 +1,10 @@
+/// Expect:
+/// - output: "Well, hello friends."
+
+fn main()
+{
+    if true
+    {
+        print("Well, hello friends.")
+    }
+}

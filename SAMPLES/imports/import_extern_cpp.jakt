@@ -1,0 +1,18 @@
+/// Expect:
+/// - output: "PASS\n"
+
+import extern "vector" {
+    namespace std {
+        extern struct vector<T> {
+            fn vector<T>() -> vector<T>
+            fn empty(this) -> bool
+        }
+    }
+}
+
+fn main() {
+    let v = std::vector<i32>()
+    if v.empty() {
+        println("PASS")
+    }
+}

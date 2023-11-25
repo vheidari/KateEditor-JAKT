@@ -1,0 +1,10 @@
+/// Expect:
+/// - error: "Cannot make mutable reference to immutable value"
+
+fn foo(anon x: &mut i64) {
+}
+
+fn main() {
+    let i = 0
+    foo(&mut i)
+}

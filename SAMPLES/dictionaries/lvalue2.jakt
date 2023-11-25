@@ -1,0 +1,8 @@
+/// Expect:
+/// - output: "5\n"
+
+fn main() {
+    mut dict = ["a": 1]
+    dict["a"] += 4
+    println("{}", dict["a"])
+}

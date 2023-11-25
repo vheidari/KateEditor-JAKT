@@ -1,0 +1,16 @@
+/// Expect:
+/// - output: "PASS\n"
+
+struct Foo {
+    string: String
+}
+
+fn overwrite(foo: &mut Foo) throws {
+    (*foo).string = "PASS"
+}
+
+fn main() {
+    mut foo = Foo(string: "FAIL")
+    overwrite(foo: &mut foo)
+    println("{}", foo.string)
+}
