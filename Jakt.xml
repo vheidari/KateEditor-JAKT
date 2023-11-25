@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language name="PlantUml" version="1" kateversion="2.4" section="Sources" extensions="*.jakt" author="Vahid Heidari (vahid-heidari@hotmail.com)" license="MIT">
+    <highlighting>
+
+        <!-- Define jaktConditional keywords  -->
+        <list name="jaktConditional">
+            <item>if</item>
+            <item>else</item>
+            <item>match</item>
+            <item>guard</item>
+        </list>
+        
+        <!-- Define jaktRepeat keywords  -->
+        <list name="jaktRepeat">
+            <item>while</item>
+            <item>for</item>
+            <item>loop</item>
+        </list>
+        
+        <!-- Define jaktExecution keywords -->
+        <list name="jaktExecution">
+            <item>break</item>
+            <item>continue</item>
+            <item>throw</item>
+            <item>yield</item>
+        </list>
+        
+        <!-- Define jaktBoolean keywords -->
+        <list name="jaktBoolean">
+            <item>true</item>
+            <item>false</item>
+        </list>
+        
+        <!-- Define jaktKeyword keywords  -->
+        <list name="jaktKeyword">
+            <item>extern</item>
+            <item>import</item>
+            <item>comptime</item>
+        </list>
+        
+        <!-- Define jaktException keywords  -->
+        <list name="jaktException">
+            <item>throws</item>
+        </list>
+        
+        <!-- Define jaktMacro keywords  -->
+        <list name="jaktMacro">
+            <item>defer</item>
+            <item>unsafe</item>
+            <item>try</item>
+            <item>catch</item>
+            <item>cpp</item>
+        </list>
+        
+        <!-- Define jaktWordOperator keywords  -->
+        <list name="jaktWordOperator">
+            <item>not</item>
+            <item>and</item>
+            <item>or</item>
+            <item>as</item>
+            <item>in</item>
+        </list>
+        
+        <!-- Define jaktVarDecl keywords  -->
+        <list name="jaktVarDecl">
+            <item>mut</item>
+            <item>let</item>
+            <item>anon</item>
+            <item>raw</item>
+        </list>
+        
+        
+        <!-- Define jaktType keywords  -->
+        <list name="jaktType">
+            <item>String</item>
+            <item>i8</item>
+            <item>i16</item>
+            <item>i32</item>
+            <item>i64</item>
+            <item>u8</item>
+            <item>u16</item>
+            <item>u32</item>
+            <item>u64</item>
+            <item>f32</item>
+            <item>f64</item>
+            <item>bool</item>
+            <item>c_int</item>
+            <item>c_char</item>
+            <item>usize</item>
+            <item>void</item>
+        </list>
+        
+        <!-- Define jaktConstant keywords  -->
+        <list name="jaktConstant">
+            <item>this</item>
+        </list>
+        
+        <!-- Define jaktStructure keywords  -->
+        <list name="jaktStructure">
+            <item>struct</item>
+            <item>lass</item>
+            <item>num</item>
+            <item>amespace</item>
+        </list>
+
+        <!-- Define jaktVisModifier keywords -->
+        <list name="jaktVisModifier">
+            <item>public</item>
+            <item>private</item>
+        </list>
+        
+        
+        <!-- Start Contexts    -->
+        <contexts>
+            <!--  Normal Text context -->
+            <context attribute="NormalText" lineEndContext="#pop" name="NormalText">
+                <DetectSpaces />
+                <!--  Star Handeling Multiple line comment handeling -->
+                <StringDetect attribute="Comment" context="Comment" String="/'" beginRegion="comment"/>
+                <keyword attribute="Keyword" context="#stay" String="Keywords" />
+                <StringDetect attribute="String" context="string" String="/\'" beginRegion="comment" />
+                <!--  Start Handeling Multiple line string  -->               
+                <DetectChar attribute="String" context="string" char="&quot;" />
+            </context>
+            
+            <!--  End Handeling Multiple line string  -->
+            <context attribute="String" lineEndContext="#stay" name="string">
+                <DetectChar attribute="String" context="#pop" char="&quot;" />
+            </context>
+            
+            <!-- End Handeling Multiple line comment handeling  -->
+            <context name="Comment" attribute="Comment" lineEndContext="#stay">
+                <DetectSpaces/>
+                <StringDetect attribute="Comment" context="#pop" String="'/" endRegion="comment"/>
+            </context>
+
+        </contexts>
+        <!--  End Contexts -->
+
+        <itemDatas>
+            <itemData name="NormalText" defStyleNum="dsNormal" />
+            <itemData name="Keyword" defStyleNum="dsKeyword" />
+            <itemData name="OpenCloseKeyword" defStyleNum="dsBuiltIn" />
+            <itemData name="String" defStyleNum="dsString" />
+            <itemData name="Symbol" defStyleNum="dsSpecialChar" />
+            <itemData name="Comment" defStyleNum="dsComment" />
+            <itemData name="MultipleComment" defStyleNum="dsComment" />
+            <itemData name="Lable" defStyleNum="dsRegionMarker" />
+            <itemData name="Operator" defStyleNum="dsOperator" />
+            <itemData name="Function" defStyleNum="dsFunction" />
+            <itemData name="ClassName" defStyleNum="dsDataType" />
+        </itemDatas>
+    </highlighting>
+
+    <!-- Start General -->
+    <general>
+        <!-- Comments  -->
+        <comments>
+            <comment name="singleLine" start="'" />
+            <comment name="multiLine" start="/'" end="'/" region="CommentFolding" />
+        </comments>
+        <keywords casesensitive="1" />
+        <folding indentationsensitive="0" />
+        <emptyLines>
+            <emptyLine regexpr="\s+" />
+            <emptyLine regexpr="\s*#.*" />
+        </emptyLines>
+        <spellchecking>
+            <encoding char="á" string="\'a" />
+            <encoding char="à" string="\`a" />
+        </spellchecking>
+    </general>
+    <!-- End General-->
+</language>
+
