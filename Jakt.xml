@@ -69,7 +69,6 @@
             <item>raw</item>
         </list>
         
-        
         <!-- Define jaktType keywords  -->
         <list name="jaktType">
             <item>String</item>
@@ -100,7 +99,7 @@
             <item>struct</item>
             <item>lass</item>
             <item>num</item>
-            <item>amespace</item>
+            <item>namespace</item>
         </list>
 
         <!-- Define jaktVisModifier keywords -->
@@ -115,23 +114,33 @@
             <!--  Normal Text context -->
             <context attribute="NormalText" lineEndContext="#pop" name="NormalText">
                 <DetectSpaces />
-                <!--  Star Handeling Multiple line comment handeling -->
-                <StringDetect attribute="Comment" context="Comment" String="/'" beginRegion="comment"/>
-                <keyword attribute="Keyword" context="#stay" String="Keywords" />
-                <StringDetect attribute="String" context="string" String="/\'" beginRegion="comment" />
+                <!--  Star Handeling Multiple line comment  -->
+                <StringDetect attribute="Comment" context="Comment" String="/*" beginRegion="comment"/>
+                
+                <!-- Start Handeling Single Line Comment -->
+                <RegExpr attribute="Comment" context="assign" String="^\/\/.*" firstNonSpace="false" />
+                
                 <!--  Start Handeling Multiple line string  -->               
                 <DetectChar attribute="String" context="string" char="&quot;" />
+        
+                <!-- Start Handeling Functions -->
+                <RegExpr attribute="JaktFunction" context="assign" String="\w+[a-z-A-Z1-9](?=\s*\()" firstNonSpace="false" />
+                
+                
+                <!-- -->
+                <keyword attribute="Keyword" context="#stay" String="Keywords" />
+                
             </context>
             
-            <!--  End Handeling Multiple line string  -->
+            <!-- -->
             <context attribute="String" lineEndContext="#stay" name="string">
                 <DetectChar attribute="String" context="#pop" char="&quot;" />
             </context>
             
-            <!-- End Handeling Multiple line comment handeling  -->
+            <!--  -->
             <context name="Comment" attribute="Comment" lineEndContext="#stay">
                 <DetectSpaces/>
-                <StringDetect attribute="Comment" context="#pop" String="//" endRegion="comment"/>
+                <StringDetect attribute="Comment" context="#pop" String="*/" endRegion="comment"/>
             </context>
 
         </contexts>
@@ -139,6 +148,7 @@
 
         <itemDatas>
             <itemData name="NormalText" defStyleNum="dsNormal" />
+            <itemData name="JaktFunction" defStyleNum="dsFunction" />
             <itemData name="Keyword" defStyleNum="dsKeyword" />
             <itemData name="OpenCloseKeyword" defStyleNum="dsBuiltIn" />
             <itemData name="String" defStyleNum="dsString" />
@@ -147,7 +157,6 @@
             <itemData name="MultipleComment" defStyleNum="dsComment" />
             <itemData name="Lable" defStyleNum="dsRegionMarker" />
             <itemData name="Operator" defStyleNum="dsOperator" />
-            <itemData name="Function" defStyleNum="dsFunction" />
             <itemData name="ClassName" defStyleNum="dsDataType" />
         </itemDatas>
     </highlighting>
@@ -157,7 +166,7 @@
         <!-- Comments  -->
         <comments>
             <comment name="singleLine" start="//" />
-            <comment name="multiLine" start="/'" end="'/" region="CommentFolding" />
+            <comment name="multiLine" start="/*" end="*/" region="CommentFolding" />
         </comments>
         <keywords casesensitive="1" />
         <folding indentationsensitive="0" />
