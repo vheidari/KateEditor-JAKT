@@ -97,8 +97,8 @@
         <!-- Define jaktStructure keywords  -->
         <list name="jaktStructure">
             <item>struct</item>
-            <item>lass</item>
-            <item>num</item>
+            <item>class</item>
+            <item>enum</item>
             <item>namespace</item>
         </list>
 
@@ -111,24 +111,39 @@
         
         <!-- Start Contexts    -->
         <contexts>
-            <!--  Normal Text context -->
+            <!--  Normal text context -->
             <context attribute="NormalText" lineEndContext="#pop" name="NormalText">
                 <DetectSpaces />
-                <!--  Star Handeling Multiple line comment  -->
+                <!--  Star handeling multiple line comment  -->
                 <StringDetect attribute="Comment" context="Comment" String="/*" beginRegion="comment"/>
                 
-                <!-- Start Handeling Single Line Comment -->
-                <RegExpr attribute="Comment" context="assign" String="^\/\/.*" firstNonSpace="false" />
+                <!-- Start handeling single line comment -->
+                <RegExpr attribute="Comment" context="assign" String="\/\/.*" firstNonSpace="false" />
                 
-                <!--  Start Handeling Multiple line string  -->               
+                <!--  Start handeling multiple line string  -->               
                 <DetectChar attribute="String" context="string" char="&quot;" />
         
-                <!-- Start Handeling Functions -->
+                <!-- Start handeling JaktFunction -->
                 <RegExpr attribute="JaktFunction" context="assign" String="\w+[a-z-A-Z1-9](?=\s*\()" firstNonSpace="false" />
                 
+        
+                <!-- Start handeling JaktlFunctionLable -->
+                <RegExpr attribute="JaktlFunctionLable" context="assign" String="\w+[a-z-A-Z](?=\s*:|\w+[a-z-A-Z]::)" firstNonSpace="false" />
                 
-                <!-- -->
-                <keyword attribute="Keyword" context="#stay" String="Keywords" />
+                <!-- Start handeling lists -->
+                <keyword attribute="JaktVisModifier" context="#stay" String="jaktVisModifier" />
+                <keyword attribute="JaktStructure" context="#stay" String="jaktStructure" />
+                <keyword attribute="JaktConstant" context="#stay" String="jaktConstant" />
+                <keyword attribute="JaktType" context="#stay" String="jaktType" />
+                <keyword attribute="JaktVarDecl" context="#stay" String="jaktVarDecl" />
+                <keyword attribute="JaktWordOperator" context="#stay" String="jaktWordOperator" />
+                <keyword attribute="JaktMacro" context="#stay" String="jaktMacro" />
+                <keyword attribute="JaktException" context="#stay" String="jaktException" />
+                <keyword attribute="JaktKeyword" context="#stay" String="jaktKeyword" />
+                <keyword attribute="JaktBoolean" context="#stay" String="jaktBoolean" />
+                <keyword attribute="JaktExecution" context="#stay" String="jaktExecution" />
+                <keyword attribute="JaktRepeat" context="#stay" String="jaktRepeat" />
+                <keyword attribute="JaktConditional" context="#stay" String="jaktConditional" />
                 
             </context>
             
@@ -149,15 +164,25 @@
         <itemDatas>
             <itemData name="NormalText" defStyleNum="dsNormal" />
             <itemData name="JaktFunction" defStyleNum="dsFunction" />
-            <itemData name="Keyword" defStyleNum="dsKeyword" />
-            <itemData name="OpenCloseKeyword" defStyleNum="dsBuiltIn" />
+            <itemData name="JaktlFunctionLable" defStyleNum="dsRegionMarker" />
+            <itemData name="JaktType" defStyleNum="dsDataType" />
+            <itemData name="JaktWordOperator" defStyleNum="dsOperator" />
+            <itemData name="JaktKeyword" defStyleNum="dsKeyword" />
+            <itemData name="JaktException" defStyleNum="dsSpecialChar" />
+            <itemData name="JaktVarDecl" defStyleNum="dsBuiltIn" />
+            <itemData name="JaktStructure" defStyleNum="dsKeyword" />
+            <itemData name="JaktVisModifier" defStyleNum="dsKeyword" />
+            <itemData name="JaktConstant" defStyleNum="dsKeyword" />
+            <itemData name="JaktMacro" defStyleNum="dsSpecialChar" />
+            <itemData name="JaktKeyword" defStyleNum="dsKeyword" />
+            <itemData name="JaktBoolean" defStyleNum="dsBuiltIn" />
+            <itemData name="JaktExecution" defStyleNum="dsSpecialChar" />
+            <itemData name="JaktRepeat" defStyleNum="dsOperator" />
+            <itemData name="JaktConditional" defStyleNum="dsOperator" />
             <itemData name="String" defStyleNum="dsString" />
             <itemData name="Symbol" defStyleNum="dsSpecialChar" />
             <itemData name="Comment" defStyleNum="dsComment" />
             <itemData name="MultipleComment" defStyleNum="dsComment" />
-            <itemData name="Lable" defStyleNum="dsRegionMarker" />
-            <itemData name="Operator" defStyleNum="dsOperator" />
-            <itemData name="ClassName" defStyleNum="dsDataType" />
         </itemDatas>
     </highlighting>
 
