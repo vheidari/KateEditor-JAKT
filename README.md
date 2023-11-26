@@ -1,5 +1,5 @@
-# KateEditor-JAKT
-KateEditor-JAKT, is a syntax highlighter for KateEditor 
+# KateEditor-JAKT 
+KateEditor-JAKT, is a JAKT language syntax highlighter for Kate Editor
 
 ## Install :
 To install it, you should copy `Jakt.xml` to `Kate` syntax folder. depend on your operation system flow right path for your self.
