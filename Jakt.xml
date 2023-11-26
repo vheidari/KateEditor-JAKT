@@ -2,7 +2,7 @@
 <language name="Jakt" version="1" kateversion="2.4" section="Sources" extensions="*.jakt;*.Jakt" author="Vahid Heidari (vahid-heidari@hotmail.com)" license="MIT">
     <highlighting>
 
-        <!--  jaktConditional keywords  -->
+        <!-- jaktConditional keywords  -->
         <list name="jaktConditional">
             <item>if</item>
             <item>else</item>
@@ -10,14 +10,14 @@
             <item>guard</item>
         </list>
         
-        <!--  jaktRepeat keywords  -->
+        <!-- jaktRepeat keywords  -->
         <list name="jaktRepeat">
             <item>while</item>
             <item>for</item>
             <item>loop</item>
         </list>
         
-        <!--  jaktExecution keywords -->
+        <!-- jaktExecution keywords -->
         <list name="jaktExecution">
             <item>return</item>
             <item>break</item>
@@ -26,25 +26,25 @@
             <item>yield</item>
         </list>
         
-        <!--  jaktBoolean keywords -->
+        <!-- jaktBoolean keywords -->
         <list name="jaktBoolean">
             <item>true</item>
             <item>false</item>
         </list>
         
-        <!--  jaktKeyword keywords  -->
+        <!-- jaktKeyword keywords  -->
         <list name="jaktKeyword">
             <item>extern</item>
             <item>import</item>
             <item>comptime</item>
         </list>
         
-        <!--  jaktException keywords  -->
+        <!-- jaktException keywords  -->
         <list name="jaktException">
             <item>throws</item>
         </list>
         
-        <!--  jaktMacro keywords  -->
+        <!-- jaktMacro keywords  -->
         <list name="jaktMacro">
             <item>defer</item>
             <item>unsafe</item>
@@ -53,7 +53,7 @@
             <item>cpp</item>
         </list>
         
-        <!--  jaktWordOperator keywords  -->
+        <!-- jaktWordOperator keywords  -->
         <list name="jaktWordOperator">
             <item>not</item>
             <item>and</item>
@@ -62,7 +62,7 @@
             <item>in</item>
         </list>
         
-        <!--  jaktVarDecl keywords  -->
+        <!-- jaktVarDecl keywords  -->
         <list name="jaktVarDecl">
             <item>mut</item>
             <item>let</item>
@@ -70,7 +70,7 @@
             <item>raw</item>
         </list>
         
-        <!--  jaktType keywords  -->
+        <!-- jaktType keywords  -->
         <list name="jaktType">
             <item>String</item>
             <item>i8</item>
@@ -90,12 +90,12 @@
             <item>void</item>
         </list>
         
-        <!--  jaktConstant keywords  -->
+        <!-- jaktConstant keywords  -->
         <list name="jaktConstant">
             <item>this</item>
         </list>
         
-        <!--  jaktStructure keywords  -->
+        <!-- jaktStructure keywords  -->
         <list name="jaktStructure">
             <item>struct</item>
             <item>class</item>
@@ -104,28 +104,28 @@
             <item>trait</item>
         </list>
 
-        <!--  jaktVisModifier keywords -->
+        <!-- jaktVisModifier keywords -->
         <list name="jaktVisModifier">
             <item>public</item>
             <item>private</item>
         </list>
         
         
-        <!-- Start Contexts    -->
+        <!-- Start Contexts -->
         <contexts>
-            <!--  Normal text context -->
+            <!-- Normal text context -->
             <context attribute="NormalText" lineEndContext="#pop" name="NormalText">
                 <DetectSpaces />
-                <!--  Start handling multiple-line comments : Comment  -->
+                <!-- Start handling multiple-line comments : Comment -->
                 <StringDetect attribute="Comment" context="Comment" String="/*" beginRegion="comment"/>
                 
                 <!-- Start handling single-line comment -->
                 <RegExpr attribute="Comment" context="assign" String="\/\/.*" firstNonSpace="false" />
                 
-                <!--  Start handling multiple-line string : jaktDoubleQuot  -->               
+                <!-- Start handling multiple-line string : jaktDoubleQuot -->               
                 <DetectChar attribute="String" context="jaktDoubleQuot" char="&quot;" />
                 
-                <!--  Start handling multiple-line string : jaktSingleQuot -->               
+                <!-- Start handling multiple-line string : jaktSingleQuot -->               
                 <DetectChar attribute="String" context="jaktSingleQuot" char="'" />
         
                 <!-- Start handling JaktFunction -->
@@ -154,7 +154,7 @@
                 
             </context>
             
-            <!-- End handling multiple-line string : jaktDoubleQuot  -->
+            <!-- End handling multiple-line string : jaktDoubleQuot -->
             <context attribute="String" lineEndContext="#stay" name="jaktDoubleQuot">
                 <DetectChar attribute="String" context="#pop" char="&quot;" />
             </context>
@@ -164,14 +164,14 @@
                 <DetectChar attribute="String" context="#pop" char="'" />
             </context>
             
-            <!-- End handling multiple-line comment : Comment  -->
+            <!-- End handling multiple-line comment : Comment -->
             <context name="Comment" attribute="Comment" lineEndContext="#stay">
                 <DetectSpaces/>
                 <StringDetect attribute="Comment" context="#pop" String="*/" endRegion="comment"/>
             </context>
 
         </contexts>
-        <!--  End Contexts -->
+        <!-- End Contexts -->
 
         <itemDatas>
             <itemData name="NormalText" defStyleNum="dsNormal" />
@@ -201,7 +201,7 @@
 
     <!-- Start General -->
     <general>
-        <!-- Comments  -->
+        <!-- Comments -->
         <comments>
             <comment name="singleLine" start="//" />
             <comment name="multiLine" start="/*" end="*/" region="CommentFolding" />
@@ -217,6 +217,6 @@
             <encoding char="à" string="\`a" />
         </spellchecking>
     </general>
-    <!-- End General-->
+    <!-- End General -->
 </language>
 
