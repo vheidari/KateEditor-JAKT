@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Jakt" version="1" kateversion="2.4" section="Sources" extensions="*.jakt" author="Vahid Heidari (vahid-heidari@hotmail.com)" license="MIT">
+<language name="Jakt" version="1" kateversion="2.4" section="Sources" extensions="*.jakt;*.Jakt" author="Vahid Heidari (vahid-heidari@hotmail.com)" license="MIT">
     <highlighting>
 
         <!-- Define jaktConditional keywords  -->
@@ -100,6 +100,7 @@
             <item>class</item>
             <item>enum</item>
             <item>namespace</item>
+            <item>trait</item>
         </list>
 
         <!-- Define jaktVisModifier keywords -->
@@ -128,7 +129,7 @@
                 
         
                 <!-- Start handeling JaktlFunctionLable -->
-                <RegExpr attribute="JaktlFunctionLable" context="assign" String="\w+[a-z-A-Z](?=\s*:|\w+[a-z-A-Z]::)" firstNonSpace="false" />
+                <RegExpr attribute="JaktlFunctionLable" context="assign" String="\w+(?=\s*:)(?!::)" firstNonSpace="false" />
                 
                 <!-- Start handeling lists -->
                 <keyword attribute="JaktVisModifier" context="#stay" String="jaktVisModifier" />
