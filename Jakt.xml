@@ -2,7 +2,7 @@
 <language name="Jakt" version="1" kateversion="2.4" section="Sources" extensions="*.jakt;*.Jakt" author="Vahid Heidari (vahid-heidari@hotmail.com)" license="MIT">
     <highlighting>
 
-        <!-- Define jaktConditional keywords  -->
+        <!--  jaktConditional keywords  -->
         <list name="jaktConditional">
             <item>if</item>
             <item>else</item>
@@ -10,14 +10,14 @@
             <item>guard</item>
         </list>
         
-        <!-- Define jaktRepeat keywords  -->
+        <!--  jaktRepeat keywords  -->
         <list name="jaktRepeat">
             <item>while</item>
             <item>for</item>
             <item>loop</item>
         </list>
         
-        <!-- Define jaktExecution keywords -->
+        <!--  jaktExecution keywords -->
         <list name="jaktExecution">
             <item>return</item>
             <item>break</item>
@@ -26,25 +26,25 @@
             <item>yield</item>
         </list>
         
-        <!-- Define jaktBoolean keywords -->
+        <!--  jaktBoolean keywords -->
         <list name="jaktBoolean">
             <item>true</item>
             <item>false</item>
         </list>
         
-        <!-- Define jaktKeyword keywords  -->
+        <!--  jaktKeyword keywords  -->
         <list name="jaktKeyword">
             <item>extern</item>
             <item>import</item>
             <item>comptime</item>
         </list>
         
-        <!-- Define jaktException keywords  -->
+        <!--  jaktException keywords  -->
         <list name="jaktException">
             <item>throws</item>
         </list>
         
-        <!-- Define jaktMacro keywords  -->
+        <!--  jaktMacro keywords  -->
         <list name="jaktMacro">
             <item>defer</item>
             <item>unsafe</item>
@@ -53,7 +53,7 @@
             <item>cpp</item>
         </list>
         
-        <!-- Define jaktWordOperator keywords  -->
+        <!--  jaktWordOperator keywords  -->
         <list name="jaktWordOperator">
             <item>not</item>
             <item>and</item>
@@ -62,7 +62,7 @@
             <item>in</item>
         </list>
         
-        <!-- Define jaktVarDecl keywords  -->
+        <!--  jaktVarDecl keywords  -->
         <list name="jaktVarDecl">
             <item>mut</item>
             <item>let</item>
@@ -70,7 +70,7 @@
             <item>raw</item>
         </list>
         
-        <!-- Define jaktType keywords  -->
+        <!--  jaktType keywords  -->
         <list name="jaktType">
             <item>String</item>
             <item>i8</item>
@@ -90,12 +90,12 @@
             <item>void</item>
         </list>
         
-        <!-- Define jaktConstant keywords  -->
+        <!--  jaktConstant keywords  -->
         <list name="jaktConstant">
             <item>this</item>
         </list>
         
-        <!-- Define jaktStructure keywords  -->
+        <!--  jaktStructure keywords  -->
         <list name="jaktStructure">
             <item>struct</item>
             <item>class</item>
@@ -104,7 +104,7 @@
             <item>trait</item>
         </list>
 
-        <!-- Define jaktVisModifier keywords -->
+        <!--  jaktVisModifier keywords -->
         <list name="jaktVisModifier">
             <item>public</item>
             <item>private</item>
@@ -116,28 +116,28 @@
             <!--  Normal text context -->
             <context attribute="NormalText" lineEndContext="#pop" name="NormalText">
                 <DetectSpaces />
-                <!--  Star handeling multiple line comment  -->
+                <!--  Start handling multiple-line comments : Comment  -->
                 <StringDetect attribute="Comment" context="Comment" String="/*" beginRegion="comment"/>
                 
-                <!-- Start handeling single line comment -->
+                <!-- Start handling single-line comment -->
                 <RegExpr attribute="Comment" context="assign" String="\/\/.*" firstNonSpace="false" />
                 
-                <!--  Start handeling multiple line string jaktDoubleQuot  -->               
+                <!--  Start handling multiple-line string : jaktDoubleQuot  -->               
                 <DetectChar attribute="String" context="jaktDoubleQuot" char="&quot;" />
                 
-                <!--  Start handeling multiple line string jaktSingleQuot -->               
+                <!--  Start handling multiple-line string : jaktSingleQuot -->               
                 <DetectChar attribute="String" context="jaktSingleQuot" char="'" />
         
-                <!-- Start handeling JaktFunction -->
+                <!-- Start handling JaktFunction -->
                 <RegExpr attribute="JaktFunction" context="assign" String="\w+[a-z-A-Z1-9](?=\s*\()" firstNonSpace="false" />
                 
-                <!-- Start handeling JaktlFunctionLable -->
+                <!-- Start handling JaktlFunctionLable -->
                 <RegExpr attribute="JaktlFunctionLable" context="assign" String="\w+(?=\s*:)(?!::)" firstNonSpace="false" />
                 
-                <!-- Start handeling JaktlFunctionLable -->
+                <!-- Start handling JaktlFunctionLable -->
                 <RegExpr attribute="JaktlSymbols" context="assign" String="(\[\[|\]\])|(\&lt;|\&gt;|-\&gt;)" firstNonSpace="false" />
                 
-                <!-- Start handeling lists -->
+                <!-- Start handling lists -->
                 <keyword attribute="JaktVisModifier" context="#stay" String="jaktVisModifier" />
                 <keyword attribute="JaktStructure" context="#stay" String="jaktStructure" />
                 <keyword attribute="JaktConstant" context="#stay" String="jaktConstant" />
@@ -154,17 +154,17 @@
                 
             </context>
             
-            <!-- -->
+            <!-- End handling multiple-line string : jaktDoubleQuot  -->
             <context attribute="String" lineEndContext="#stay" name="jaktDoubleQuot">
                 <DetectChar attribute="String" context="#pop" char="&quot;" />
             </context>
             
-            <!-- -->
+            <!-- End handling multiple-line string : jaktSingleQuot -->
             <context attribute="String" lineEndContext="#stay" name="jaktSingleQuot">
                 <DetectChar attribute="String" context="#pop" char="'" />
             </context>
             
-            <!--  -->
+            <!-- End handling multiple-line comment : Comment  -->
             <context name="Comment" attribute="Comment" lineEndContext="#stay">
                 <DetectSpaces/>
                 <StringDetect attribute="Comment" context="#pop" String="*/" endRegion="comment"/>
