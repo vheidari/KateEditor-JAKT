@@ -121,13 +121,15 @@
                 <!-- Start handeling single line comment -->
                 <RegExpr attribute="Comment" context="assign" String="\/\/.*" firstNonSpace="false" />
                 
-                <!--  Start handeling multiple line string  -->               
-                <DetectChar attribute="String" context="string" char="&quot;" />
+                <!--  Start handeling multiple line string jaktDoubleQuot  -->               
+                <DetectChar attribute="String" context="jaktDoubleQuot" char="&quot;" />
+                
+                <!--  Start handeling multiple line string jaktSingleQuot -->               
+                <DetectChar attribute="String" context="jaktSingleQuot" char="'" />
         
                 <!-- Start handeling JaktFunction -->
                 <RegExpr attribute="JaktFunction" context="assign" String="\w+[a-z-A-Z1-9](?=\s*\()" firstNonSpace="false" />
                 
-        
                 <!-- Start handeling JaktlFunctionLable -->
                 <RegExpr attribute="JaktlFunctionLable" context="assign" String="\w+(?=\s*:)(?!::)" firstNonSpace="false" />
                 
@@ -149,8 +151,13 @@
             </context>
             
             <!-- -->
-            <context attribute="String" lineEndContext="#stay" name="string">
+            <context attribute="String" lineEndContext="#stay" name="jaktDoubleQuot">
                 <DetectChar attribute="String" context="#pop" char="&quot;" />
+            </context>
+            
+            <!-- -->
+            <context attribute="String" lineEndContext="#stay" name="jaktSingleQuot">
+                <DetectChar attribute="String" context="#pop" char="'" />
             </context>
             
             <!--  -->
