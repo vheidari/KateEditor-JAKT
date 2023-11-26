@@ -134,6 +134,9 @@
                 <!-- Start handeling JaktlFunctionLable -->
                 <RegExpr attribute="JaktlFunctionLable" context="assign" String="\w+(?=\s*:)(?!::)" firstNonSpace="false" />
                 
+                <!-- Start handeling JaktlFunctionLable -->
+                <RegExpr attribute="JaktlSymbols" context="assign" String="(\[\[|\]\])|(\&lt;|\&gt;|-\&gt;)" firstNonSpace="false" />
+                
                 <!-- Start handeling lists -->
                 <keyword attribute="JaktVisModifier" context="#stay" String="jaktVisModifier" />
                 <keyword attribute="JaktStructure" context="#stay" String="jaktStructure" />
@@ -175,7 +178,7 @@
             <itemData name="JaktFunction" defStyleNum="dsFunction" />
             <itemData name="JaktlFunctionLable" defStyleNum="dsRegionMarker" />
             <itemData name="JaktType" defStyleNum="dsDataType" />
-            <itemData name="JaktWordOperator" defStyleNum="dsOperator" />
+            <itemData name="JaktWordOperator" defStyleNum="dsKeyword" />
             <itemData name="JaktKeyword" defStyleNum="dsKeyword" />
             <itemData name="JaktException" defStyleNum="dsSpecialChar" />
             <itemData name="JaktVarDecl" defStyleNum="dsBuiltIn" />
@@ -186,8 +189,9 @@
             <itemData name="JaktKeyword" defStyleNum="dsKeyword" />
             <itemData name="JaktBoolean" defStyleNum="dsBuiltIn" />
             <itemData name="JaktExecution" defStyleNum="dsSpecialChar" />
-            <itemData name="JaktRepeat" defStyleNum="dsOperator" />
-            <itemData name="JaktConditional" defStyleNum="dsOperator" />
+            <itemData name="JaktRepeat" defStyleNum="dsKeyword" />
+            <itemData name="JaktConditional" defStyleNum="dsKeyword" />
+            <itemData name="JaktlSymbols" defStyleNum="dsSpecialChar" />
             <itemData name="String" defStyleNum="dsString" />
             <itemData name="Symbol" defStyleNum="dsSpecialChar" />
             <itemData name="Comment" defStyleNum="dsComment" />
