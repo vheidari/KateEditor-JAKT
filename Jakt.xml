@@ -19,6 +19,7 @@
         
         <!-- Define jaktExecution keywords -->
         <list name="jaktExecution">
+            <item>return</item>
             <item>break</item>
             <item>continue</item>
             <item>throw</item>
