@@ -116,8 +116,6 @@
             <!-- Normal text context -->
             <context attribute="NormalText" lineEndContext="#pop" name="NormalText">
                 <DetectSpaces />
-                <!-- Start handling multiple-line comments : Comment -->
-                <StringDetect attribute="Comment" context="Comment" String="/*" beginRegion="comment"/>
                 
                 <!-- Start handling single-line comment -->
                 <RegExpr attribute="Comment" context="assign" String="\/\/.*" firstNonSpace="false" />
@@ -164,11 +162,6 @@
                 <DetectChar attribute="String" context="#pop" char="'" />
             </context>
             
-            <!-- End handling multiple-line comment : Comment -->
-            <context name="Comment" attribute="Comment" lineEndContext="#stay">
-                <DetectSpaces/>
-                <StringDetect attribute="Comment" context="#pop" String="*/" endRegion="comment"/>
-            </context>
 
         </contexts>
         <!-- End Contexts -->
@@ -201,21 +194,12 @@
 
     <!-- Start General -->
     <general>
-        <!-- Comments -->
-        <comments>
-            <comment name="singleLine" start="//" />
-            <comment name="multiLine" start="/*" end="*/" region="CommentFolding" />
-        </comments>
         <keywords casesensitive="1" />
         <folding indentationsensitive="0" />
         <emptyLines>
             <emptyLine regexpr="\s+" />
             <emptyLine regexpr="\s*#.*" />
         </emptyLines>
-        <spellchecking>
-            <encoding char="á" string="\'a" />
-            <encoding char="à" string="\`a" />
-        </spellchecking>
     </general>
     <!-- End General -->
 </language>
