@@ -124,7 +124,6 @@
                 <DetectChar attribute="String" context="jaktDoubleQuot" char="&quot;" />
                 
                 <!-- Start handling multiple-line string : jaktSingleQuot -->
-<!--                 <DetectChar attribute="String" char="'"/> -->
                 <DetectChar attribute="String" context="jaktSingleQuot" char="'" />
                 
                 <!--  Start handling JaktBCCharSingleQuot  -->
