@@ -169,10 +169,6 @@
                 <DetectChar attribute="String" context="#pop" char="'" />
             </context>
             
-<<<<<<< HEAD
-=======
-
->>>>>>> 7d3ea5959f294d97beae9ce9299064e3401121f8
         </contexts>
         <!-- End Contexts -->
 
