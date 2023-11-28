@@ -123,17 +123,21 @@
                 <!-- Start handling multiple-line string : jaktDoubleQuot -->               
                 <DetectChar attribute="String" context="jaktDoubleQuot" char="&quot;" />
                 
-                <!-- Start handling multiple-line string : jaktSingleQuot -->               
+                <!-- Start handling multiple-line string : jaktSingleQuot -->
+<!--                 <DetectChar attribute="String" char="'"/> -->
                 <DetectChar attribute="String" context="jaktSingleQuot" char="'" />
-        
+                
+                <!--  Start handling JaktBCCharSingleQuot  -->
+                <RegExpr attribute="JaktBCCharSingleQuot" context="assign" String="(b(?=\'))|(c(?=\'))" firstNonSpace="false" />
+                
                 <!-- Start handling JaktFunction -->
-                <RegExpr attribute="JaktFunction" context="assign" String="\w+[a-z-A-Z1-9](?=\s*\()" firstNonSpace="false" />
+                <RegExpr attribute="JaktFunction" context="assign" String="(\w+[a-z-A-Z0-9](?=\s*\())|(\w+[a-z-A-Z0-9](?=\s*\&lt;.*\&gt;\s*\())" firstNonSpace="false" />
                 
-                <!-- Start handling JaktlFunctionLable -->
-                <RegExpr attribute="JaktlFunctionLable" context="assign" String="\w+(?=\s*:)(?!::)" firstNonSpace="false" />
+                <!-- Start handling JaktFunctionLable -->
+                <RegExpr attribute="JaktFunctionLable" context="assign" String="\w+(?=\s*:)(?!::)" firstNonSpace="false" />
                 
-                <!-- Start handling JaktlFunctionLable -->
-                <RegExpr attribute="JaktlSymbols" context="assign" String="(\[\[|\]\])|(\&lt;|\&gt;|-\&gt;)" firstNonSpace="false" />
+                <!-- Start handling JaktSymbols -->
+                <RegExpr attribute="JaktSymbols" context="assign" String="(\[\[|\]\])|(\&lt;(?!=)|\&gt;(?!=))|(=\&gt;|-\&gt;|\&gt;=|\&lt;=|\=\=|\!\=|\^|\&amp;|\||\+\=|\-\=|\*\=|\/\=|\=|\+\+|\-\-|\:\:|\.\.|\!|\+|\*|\/|\-)" firstNonSpace="false" />
                 
                 <!-- Start handling lists -->
                 <keyword attribute="JaktVisModifier" context="#stay" String="jaktVisModifier" />
@@ -154,22 +158,25 @@
             
             <!-- End handling multiple-line string : jaktDoubleQuot -->
             <context attribute="String" lineEndContext="#stay" name="jaktDoubleQuot">
+                <RegExpr attribute="String" context="#stay" String="\\&quot;"/>
+                <RegExpr attribute="String" context="#stay" String="\\\\"/>
                 <DetectChar attribute="String" context="#pop" char="&quot;" />
             </context>
             
             <!-- End handling multiple-line string : jaktSingleQuot -->
             <context attribute="String" lineEndContext="#stay" name="jaktSingleQuot">
+                <RegExpr attribute="String" context="#stay" String="\\'"/>
+                <RegExpr attribute="String" context="#stay" String="\\\\"/>
                 <DetectChar attribute="String" context="#pop" char="'" />
             </context>
             
-
         </contexts>
         <!-- End Contexts -->
 
         <itemDatas>
             <itemData name="NormalText" defStyleNum="dsNormal" />
             <itemData name="JaktFunction" defStyleNum="dsFunction" />
-            <itemData name="JaktlFunctionLable" defStyleNum="dsRegionMarker" />
+            <itemData name="JaktFunctionLable" defStyleNum="dsRegionMarker" />
             <itemData name="JaktType" defStyleNum="dsDataType" />
             <itemData name="JaktWordOperator" defStyleNum="dsKeyword" />
             <itemData name="JaktKeyword" defStyleNum="dsKeyword" />
@@ -184,11 +191,10 @@
             <itemData name="JaktExecution" defStyleNum="dsSpecialChar" />
             <itemData name="JaktRepeat" defStyleNum="dsKeyword" />
             <itemData name="JaktConditional" defStyleNum="dsKeyword" />
-            <itemData name="JaktlSymbols" defStyleNum="dsSpecialChar" />
+            <itemData name="JaktSymbols" defStyleNum="dsSpecialChar" />
             <itemData name="String" defStyleNum="dsString" />
-            <itemData name="Symbol" defStyleNum="dsSpecialChar" />
+            <itemData name="JaktBCCharSingleQuot" defStyleNum="dsString" />
             <itemData name="Comment" defStyleNum="dsComment" />
-            <itemData name="MultipleComment" defStyleNum="dsComment" />
         </itemDatas>
     </highlighting>
 
