@@ -37,10 +37,13 @@
             <item>extern</item>
             <item>import</item>
             <item>comptime</item>
+            <item>fn</item>
+            <item>boxed</item>
         </list>
         
         <!-- jaktException keywords  -->
         <list name="jaktException">
+            <item>throw</item>
             <item>throws</item>
         </list>
         
@@ -51,13 +54,18 @@
             <item>try</item>
             <item>catch</item>
             <item>cpp</item>
+            <item>weak</item>
+            <item>reflect</item>
+            <item>weak</item>
+            <item>restricted</item>
         </list>
         
         <!-- jaktWordOperator keywords  -->
         <list name="jaktWordOperator">
-            <item>not</item>
             <item>and</item>
             <item>or</item>
+            <item>is</item>
+            <item>not</item>
             <item>as</item>
             <item>in</item>
         </list>
@@ -73,6 +81,7 @@
         <!-- jaktType keywords  -->
         <list name="jaktType">
             <item>String</item>
+            <item>never</item>
             <item>i8</item>
             <item>i16</item>
             <item>i32</item>
@@ -130,13 +139,13 @@
                 <RegExpr attribute="JaktBCCharSingleQuot" context="assign" String="(b(?=\'))|(c(?=\'))" firstNonSpace="false" />
                 
                 <!-- Start handling JaktFunction -->
-                <RegExpr attribute="JaktFunction" context="assign" String="(\w+[a-z-A-Z0-9](?=\s*\())|(\w+[a-z-A-Z0-9](?=\s*\&lt;.*\&gt;\s*\())" firstNonSpace="false" />
+                <RegExpr attribute="JaktFunction" context="assign" String="(\b(?!(let|restricted)\b)\w+[a-z-A-Z0-9](?=\s*\())|(\b(?!(let|restricted)\b)\w+[a-z-A-Z0-9](?=\s*\&lt;.*\&gt;\s*\())" firstNonSpace="false" />
                 
                 <!-- Start handling JaktFunctionLable -->
-                <RegExpr attribute="JaktFunctionLable" context="assign" String="\w+(?=\s*:)(?!::)" firstNonSpace="false" />
+                <RegExpr attribute="JaktFunctionLable" context="assign" String="(\b(?&lt;!class\b\s)[a-z_]\w+(?=\s*:)(?!::))|\b(?&lt;!class\b\s)[a-z_](?=\s*:)(?!::)" firstNonSpace="false" />
                 
                 <!-- Start handling JaktSymbols -->
-                <RegExpr attribute="JaktSymbols" context="assign" String="(\[\[|\]\])|(\&lt;(?!=)|\&gt;(?!=))|(=\&gt;|-\&gt;|\&gt;=|\&lt;=|\=\=|\!\=|\^|\&amp;|\||\+\=|\-\=|\*\=|\/\=|\=|\+\+|\-\-|\:\:|\.\.|\!|\+|\*|\/|\-)" firstNonSpace="false" />
+                <RegExpr attribute="JaktSymbols" context="assign" String="(\[\[|\]\])|(\&lt;(?!=)|\&gt;(?!=))|(=\&gt;|-\&gt;|\&gt;=|\&lt;=|\=\=|\!\=|\^|\&amp;|\||\+\=|\-\=|\*\=|\/\=|\=|\+\+|\-\-|\:\:|\.\.\.|\.\.|\!|\+|\*|\/|\-)" firstNonSpace="false" />
                 
                 <!-- Start handling lists -->
                 <keyword attribute="JaktVisModifier" context="#stay" String="jaktVisModifier" />
