@@ -56,7 +56,6 @@
             <item>cpp</item>
             <item>weak</item>
             <item>reflect</item>
-            <item>weak</item>
             <item>restricted</item>
         </list>
         
@@ -141,8 +140,8 @@
                 <!-- Start handling JaktFunction -->
                 <RegExpr attribute="JaktFunction" context="assign" String="(\b(?!(let|restricted)\b)\w+[a-z-A-Z0-9](?=\s*\())|(\b(?!(let|restricted)\b)\w+[a-z-A-Z0-9](?=\s*\&lt;.*\&gt;\s*\())" firstNonSpace="false" />
                 
-                <!-- Start handling JaktFunctionLable -->
-                <RegExpr attribute="JaktFunctionLable" context="assign" String="(\b(?&lt;!class\b\s)[a-z_]\w+(?=\s*:)(?!::))|\b(?&lt;!class\b\s)[a-z_](?=\s*:)(?!::)" firstNonSpace="false" />
+                <!-- Start handling JaktLables -->
+                <RegExpr attribute="JaktLables" context="assign" String="(\b(?&lt;!class\b\s)[a-z_]\w+(?=\s*:)(?!::))|\b(?&lt;!class\b\s)[a-z_](?=\s*:)(?!::)" firstNonSpace="false" />
                 
                 <!-- Start handling JaktSymbols -->
                 <RegExpr attribute="JaktSymbols" context="assign" String="(\[\[|\]\])|(\&lt;(?!=)|\&gt;(?!=))|(=\&gt;|-\&gt;|\&gt;=|\&lt;=|\=\=|\!\=|\^|\&amp;|\||\+\=|\-\=|\*\=|\/\=|\=|\+\+|\-\-|\:\:|\.\.\.|\.\.|\!|\+|\*|\/|\-)" firstNonSpace="false" />
@@ -184,7 +183,7 @@
         <itemDatas>
             <itemData name="NormalText" defStyleNum="dsNormal" />
             <itemData name="JaktFunction" defStyleNum="dsFunction" />
-            <itemData name="JaktFunctionLable" defStyleNum="dsRegionMarker" />
+            <itemData name="JaktLables" defStyleNum="dsRegionMarker" />
             <itemData name="JaktType" defStyleNum="dsDataType" />
             <itemData name="JaktWordOperator" defStyleNum="dsKeyword" />
             <itemData name="JaktKeyword" defStyleNum="dsKeyword" />
