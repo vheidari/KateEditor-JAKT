@@ -43,7 +43,6 @@
         
         <!-- jaktException keywords  -->
         <list name="jaktException">
-            <item>throw</item>
             <item>throws</item>
         </list>
         
