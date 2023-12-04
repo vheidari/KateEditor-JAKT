@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language name="Jakt" version="1" kateversion="2.4" section="Sources" extensions="*.jakt;*.Jakt" author="Vahid Heidari (vahid-heidari@hotmail.com)" license="MIT">
+<language name="Jakt" version="2" kateversion="5.*" section="Sources" extensions="*.jakt;*.Jakt" author="Vahid Heidari (vahid-heidari@hotmail.com)" license="MIT" priority="9">
     <highlighting>
 
         <!-- jaktConditional keywords  -->
@@ -39,6 +39,9 @@
             <item>comptime</item>
             <item>fn</item>
             <item>boxed</item>
+            <item>virtual</item>
+            <item>override</item>
+            <item>destructor</item>
         </list>
         
         <!-- jaktException keywords  -->
@@ -56,6 +59,8 @@
             <item>weak</item>
             <item>reflect</item>
             <item>restricted</item>
+            <item>implements</item>
+            <item>requires</item>
         </list>
         
         <!-- jaktWordOperator keywords  -->
@@ -80,6 +85,11 @@
         <list name="jaktType">
             <item>String</item>
             <item>never</item>
+            <item>None</item>
+            <item>void</item>
+            <item>bool</item>
+            <item>usize</item>
+            <item>uz</item>
             <item>i8</item>
             <item>i16</item>
             <item>i32</item>
@@ -90,11 +100,8 @@
             <item>u64</item>
             <item>f32</item>
             <item>f64</item>
-            <item>bool</item>
             <item>c_int</item>
             <item>c_char</item>
-            <item>usize</item>
-            <item>void</item>
         </list>
         
         <!-- jaktConstant keywords  -->
@@ -137,13 +144,19 @@
                 <RegExpr attribute="JaktBCCharSingleQuot" context="assign" String="(b(?=\'))|(c(?=\'))" firstNonSpace="false" />
                 
                 <!-- Start handling JaktFunction -->
-                <RegExpr attribute="JaktFunction" context="assign" String="(\b(?!(let|restricted)\b)\w+[a-z-A-Z0-9](?=\s*\())|(\b(?!(let|restricted)\b)\w+[a-z-A-Z0-9](?=\s*\&lt;.*\&gt;\s*\())" firstNonSpace="false" />
+                <RegExpr attribute="JaktFunction" context="assign" String="(\b(?!(let|restricted|implements|requires|fn)\b)[a-z-A-Z0-9_]+(?=\s*\())|(\b(?!(let|restricted|implements|requires|fn)\b)[a-z-A-Z0-9_]+(?=\s*\&lt;.*\&gt;\s*\())" firstNonSpace="false" />
                 
                 <!-- Start handling JaktLables -->
                 <RegExpr attribute="JaktLables" context="assign" String="(\b(?&lt;!class\b\s)[a-z_]\w+(?=\s*:)(?!::))|\b(?&lt;!class\b\s)[a-z_](?=\s*:)(?!::)" firstNonSpace="false" />
                 
                 <!-- Start handling JaktSymbols -->
-                <RegExpr attribute="JaktSymbols" context="assign" String="(\[\[|\]\])|(\&lt;(?!=)|\&gt;(?!=))|(=\&gt;|-\&gt;|\&gt;=|\&lt;=|\=\=|\!\=|\^|\&amp;|\||\+\=|\-\=|\*\=|\/\=|\=|\+\+|\-\-|\:\:|\.\.\.|\.\.|\!|\+|\*|\/|\-)" firstNonSpace="false" />
+                <RegExpr attribute="JaktSymbols" context="assign" String="(\[|\]|\&lt;(?!=)|\&gt;(?!=))|(=\&gt;|-\&gt;|\&gt;=|\&lt;=|\=\=|\!\=|\^|\&amp;|\||\+\=|\-\=|\*\=|\/\=|\=|\+\+|\-\-|\:\:|\:|\.\.\.|\.\.|\!|\+|\*|\/|\-|\?|\%|\~)" firstNonSpace="false" />
+                
+                <!-- Start handling JaktNumericLiteralSuffixes -->
+                <RegExpr attribute="JaktNumericLiteralSuffixes" context="assign" String="(i(8|16|32|64)|u(8|16|32|64)|f(32|64)|u(z))" firstNonSpace="false" />
+                
+                <!-- Start handling JaktHexBinaryOctalNumbers -->
+                <RegExpr attribute="JaktHexBinaryOctalNumbers" context="assign" String="(0x(\d+[a-f0-9_]+|[a-f0-9_]+))|(0b[0-1_]+)|(0o(\d+[0-7_]+|[0-7_]+))" firstNonSpace="false" />
                 
                 <!-- Start handling lists -->
                 <keyword attribute="JaktVisModifier" context="#stay" String="jaktVisModifier" />
@@ -184,10 +197,12 @@
             <itemData name="JaktFunction" defStyleNum="dsFunction" />
             <itemData name="JaktLables" defStyleNum="dsRegionMarker" />
             <itemData name="JaktType" defStyleNum="dsDataType" />
+            <itemData name="JaktNumericLiteralSuffixes" defStyleNum="dsDataType"/>
             <itemData name="JaktWordOperator" defStyleNum="dsKeyword" />
             <itemData name="JaktKeyword" defStyleNum="dsKeyword" />
             <itemData name="JaktException" defStyleNum="dsSpecialChar" />
             <itemData name="JaktVarDecl" defStyleNum="dsBuiltIn" />
+            <itemData name="JaktHexBinaryOctalNumbers" defStyleNum="dsAnnotation" bold="0" />
             <itemData name="JaktStructure" defStyleNum="dsKeyword" />
             <itemData name="JaktVisModifier" defStyleNum="dsKeyword" />
             <itemData name="JaktConstant" defStyleNum="dsKeyword" />
@@ -207,7 +222,7 @@
     <!-- Start General -->
     <general>
         <keywords casesensitive="1" />
-        <folding indentationsensitive="0" />
+        <folding indentationsensitive="1" />
         <emptyLines>
             <emptyLine regexpr="\s+" />
             <emptyLine regexpr="\s*#.*" />
